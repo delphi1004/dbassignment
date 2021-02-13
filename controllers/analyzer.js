@@ -1,7 +1,7 @@
-const analyserRouter = require('express').Router()
+const analyzerRouter = require('express').Router()
 const logger = require('../utils/logger')
 
-function analyseData(data) {
+function analyzeData(data) {
   let finalLetterCount = null
   const withSpaces = data.length
   const findSpaces = data.match(/\s/g)
@@ -38,7 +38,7 @@ function analyseData(data) {
   return result
 }
 
-analyserRouter.post('/', async (req, res) => {
+analyzerRouter.post('/', async (req, res) => {
   const body = req.body
 
   try {
@@ -46,7 +46,7 @@ analyserRouter.post('/', async (req, res) => {
       if (body.Text.length <= 0) {
         res.status(400).json({ error: "invalid data , data is empty" })
       } else {
-        res.json(analyseData(body.Text))
+        res.json(analyzeData(body.Text))
       }
     } else {
       res.status(400).json({ error: "invalid data format, can't find 'Text'" })
@@ -56,4 +56,4 @@ analyserRouter.post('/', async (req, res) => {
   }
 })
 
-module.exports = analyserRouter
+module.exports = analyzerRouter
