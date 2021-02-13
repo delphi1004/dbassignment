@@ -11,7 +11,7 @@ describe('Testing for DB assignment API', () => {
     const characterCount = [{"e": 2}, {"h": 1}, {"i": 1}, {"l": 2}, {"m": 1}, {"o": 1}, {"s": 1}, {"t": 1}]
 
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(data)
       .expect(200)
       .expect('Content-Type', /application\/json/)
@@ -28,7 +28,7 @@ describe('Testing for DB assignment API', () => {
     }
 
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(data)
       .expect(400)
       .expect('Content-Type', /application\/json/)
@@ -38,7 +38,7 @@ describe('Testing for DB assignment API', () => {
 
   test('abnormal configuration , null data', async () => {
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(null)
       .expect(400)
       .expect('Content-Type', /application\/json/)
@@ -52,7 +52,7 @@ describe('Testing for DB assignment API', () => {
     }
 
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(data)
       .expect(200)
       .expect('Content-Type', /application\/json/)
@@ -69,7 +69,7 @@ describe('Testing for DB assignment API', () => {
     }
 
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(data)
       .expect(200)
       .expect('Content-Type', /application\/json/)
@@ -86,7 +86,7 @@ describe('Testing for DB assignment API', () => {
     }
 
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(data)
       .expect(200)
       .expect('Content-Type', /application\/json/)
@@ -105,7 +105,7 @@ describe('Testing for DB assignment API', () => {
     const characterCount = [{"e": 1}, {"h": 1}, {"l": 2}, {"o": 1}]
 
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(data)
       .expect(200)
       .expect('Content-Type', /application\/json/)
@@ -124,7 +124,7 @@ describe('Testing for DB assignment API', () => {
     const characterCount = [{ "a": 2 } , { "e": 2 }, { "g": 1 } , { "h": 1 }, { "i": 2 }, {"l": 2}, {"m":1} ,{"n":1},{"o":1}, {"s": 1} , {"t": 1}]
 
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(data)
       .expect(200)
       .expect('Content-Type', /application\/json/)
@@ -143,7 +143,7 @@ describe('Testing for DB assignment API', () => {
     const characterCount = [{"e": 2}, {"h": 1}, {"i": 1}, {"l": 2}, {"m": 1}, {"o": 1}, {"s": 1}, {"t": 1}]
 
     const result = await api
-      .post('/analyse')
+      .post('/analyze')
       .send(data)
       .expect(200)
       .expect('Content-Type', /application\/json/)
@@ -153,5 +153,4 @@ describe('Testing for DB assignment API', () => {
     expect(result.body.wordCount).toEqual(3)
     expect(result.body.characterCount).toEqual(characterCount)
   })
-
 })
