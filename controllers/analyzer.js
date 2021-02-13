@@ -15,8 +15,8 @@ function analyzeData(data) {
   if (onlyAlphabet) {
     const filteredData = onlyAlphabet.sort()
     const letterCount = filteredData.reduce((count, letter) => {
-      count[letter] ? count[letter]++ : count[letter] = 1;
-      return count;
+      count[letter] ? count[letter]++ : count[letter] = 1
+      return count
     }, {})
   
     finalLetterCount = Object.keys(letterCount).map(letter => {
