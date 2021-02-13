@@ -42,11 +42,11 @@ analyzerRouter.post('/', async (req, res) => {
   const body = req.body
 
   try {
-    if (body.Text !== undefined) {
+    if (body.text !== undefined) {
       if (body.Text.length <= 0) {
         res.status(400).json({ error: "invalid data , data is empty" })
       } else {
-        res.json(analyzeData(body.Text))
+        res.json(analyzeData(body.text))
       }
     } else {
       res.status(400).json({ error: "invalid data format, can't find 'Text'" })
