@@ -13,8 +13,7 @@ function analyzeData(data) {
   logger.info(onlyAlphabet)
 
   if (onlyAlphabet) {
-    const filteredData = onlyAlphabet.sort()
-    const letterCount = filteredData.reduce((count, letter) => {
+    const letterCount = onlyAlphabet.sort().reduce((count, letter) => {
       count[letter] ? count[letter]++ : count[letter] = 1
       return count
     }, {})
