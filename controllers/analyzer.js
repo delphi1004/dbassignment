@@ -43,7 +43,7 @@ analyzerRouter.post('/', async (req, res) => {
 
   try {
     if (body.text !== undefined) {
-      res.json(analyzeData(body.text))
+      res.json(analyzeData(body.text.toLowerCase()))
     } else {
       res.status(400).json({ error: "invalid data format, can't find 'Text'" })
     }
