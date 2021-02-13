@@ -1,4 +1,4 @@
-name: dreab broker assignment-scheduled-health-check
+name: dream broker assignment-scheduled-health-check
 
 on:
   schedule:
