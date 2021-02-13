@@ -31,7 +31,7 @@ describe('Testing for DB assignment API', () => {
     const result = await api
       .post('/analyze')
       .send(data)
-      .expect(400)
+      .expect(200)
       .expect('Content-Type', /application\/json/)
     
     expect(result.body.textLength.withSpaces).toEqual(0)
@@ -54,6 +54,7 @@ describe('Testing for DB assignment API', () => {
     const data = {
       'text' : '  '
     }
+    const characterCount = []
 
     const result = await api
       .post('/analyze')
@@ -64,13 +65,14 @@ describe('Testing for DB assignment API', () => {
     expect(result.body.textLength.withSpaces).toEqual(2)
     expect(result.body.textLength.withoutSpaces).toEqual(0)
     expect(result.body.wordCount).toEqual(0)
-    expect(result.body.characterCount).toEqual(null)
+    expect(result.body.characterCount).toEqual(characterCount)
   })
 
   test('abnormal configuration , without alphabet', async () => {
     const data = {
       'text' : ' 123 ** !!  '
     }
+    const characterCount = []
 
     const result = await api
       .post('/analyze')
@@ -81,13 +83,14 @@ describe('Testing for DB assignment API', () => {
     expect(result.body.textLength.withSpaces).toEqual(12)
     expect(result.body.textLength.withoutSpaces).toEqual(7)
     expect(result.body.wordCount).toEqual(3)
-    expect(result.body.characterCount).toEqual(null)
+    expect(result.body.characterCount).toEqual(characterCount)
   })
 
   test('abnormal configuration , without alphabet and space(s)', async () => {
     const data = {
       'text' : '123**!!'
     }
+    const characterCount = []
 
     const result = await api
       .post('/analyze')
@@ -98,7 +101,7 @@ describe('Testing for DB assignment API', () => {
     expect(result.body.textLength.withSpaces).toEqual(7)
     expect(result.body.textLength.withoutSpaces).toEqual(7)
     expect(result.body.wordCount).toEqual(1)
-    expect(result.body.characterCount).toEqual(null)
+    expect(result.body.characterCount).toEqual(characterCount)
   })
 
   test('abnormal configuration , alphabet without space(s)', async () => {
