@@ -47,7 +47,7 @@ describe('Testing for DB assignment API', () => {
       .expect(400)
       .expect('Content-Type', /application\/json/)
     
-    expect(result.body.error).toContain(`invalid data format, can't find 'Text'`)
+    expect(result.body.error).toContain(`invalid data format, can't find 'text'`)
   })
 
   test('abnormal configuration , only spaces', async () => {
