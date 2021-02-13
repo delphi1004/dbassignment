@@ -6,7 +6,7 @@ describe('Testing for DB assignment API', () => {
 
   test('normal configuration', async () => {
     const data = {
-      'Text' : 'hello 2 times  '
+      'text' : 'hello 2 times  '
     }
     const characterCount = [{"e": 2}, {"h": 1}, {"i": 1}, {"l": 2}, {"m": 1}, {"o": 1}, {"s": 1}, {"t": 1}]
 
@@ -24,8 +24,9 @@ describe('Testing for DB assignment API', () => {
 
   test('abnormal configuration , empty text', async () => {
     const data = {
-      'Text' : ''
+      'text' : ''
     }
+    const characterCount = []
 
     const result = await api
       .post('/analyze')
@@ -33,7 +34,10 @@ describe('Testing for DB assignment API', () => {
       .expect(400)
       .expect('Content-Type', /application\/json/)
     
-    expect(result.body.error).toContain('invalid data , data is empty')
+    expect(result.body.textLength.withSpaces).toEqual(0)
+    expect(result.body.textLength.withoutSpaces).toEqual(0)
+    expect(result.body.wordCount).toEqual(0)
+    expect(result.body.characterCount).toEqual(characterCount)
   })
 
   test('abnormal configuration , null data', async () => {
@@ -48,7 +52,7 @@ describe('Testing for DB assignment API', () => {
 
   test('abnormal configuration , only spaces', async () => {
     const data = {
-      'Text' : '  '
+      'text' : '  '
     }
 
     const result = await api
@@ -65,7 +69,7 @@ describe('Testing for DB assignment API', () => {
 
   test('abnormal configuration , without alphabet', async () => {
     const data = {
-      'Text' : ' 123 ** !!  '
+      'text' : ' 123 ** !!  '
     }
 
     const result = await api
@@ -82,7 +86,7 @@ describe('Testing for DB assignment API', () => {
 
   test('abnormal configuration , without alphabet and space(s)', async () => {
     const data = {
-      'Text' : '123**!!'
+      'text' : '123**!!'
     }
 
     const result = await api
@@ -99,7 +103,7 @@ describe('Testing for DB assignment API', () => {
 
   test('abnormal configuration , alphabet without space(s)', async () => {
     const data = {
-      'Text' : 'hello'
+      'text' : 'hello'
     }
 
     const characterCount = [{"e": 1}, {"h": 1}, {"l": 2}, {"o": 1}]
@@ -118,7 +122,7 @@ describe('Testing for DB assignment API', () => {
 
   test('abnormal configuration , alphabet with underscore', async () => {
     const data = {
-      'Text' : ' hello_2_**!! times_again '
+      'text' : ' hello_2_**!! times_again '
     }
 
     const characterCount = [{ "a": 2 } , { "e": 2 }, { "g": 1 } , { "h": 1 }, { "i": 2 }, {"l": 2}, {"m":1} ,{"n":1},{"o":1}, {"s": 1} , {"t": 1}]
@@ -137,7 +141,7 @@ describe('Testing for DB assignment API', () => {
 
   test('abnormal configuration , starting,ending with space', async () => {
     const data = {
-      'Text' : ' hello 2 times '
+      'text' : ' hello 2 times '
     }
 
     const characterCount = [{"e": 2}, {"h": 1}, {"i": 1}, {"l": 2}, {"m": 1}, {"o": 1}, {"s": 1}, {"t": 1}]

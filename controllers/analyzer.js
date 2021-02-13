@@ -2,7 +2,7 @@ const analyzerRouter = require('express').Router()
 const logger = require('../utils/logger')
 
 function analyzeData(data) {
-  let finalLetterCount = null
+  let finalLetterCount = []
   const withSpaces = data.length
   const findSpaces = data.match(/\s/g)
   const withoutSpaces = withSpaces - (findSpaces ? findSpaces.length : 0)
@@ -43,11 +43,7 @@ analyzerRouter.post('/', async (req, res) => {
 
   try {
     if (body.text !== undefined) {
-      if (body.Text.length <= 0) {
-        res.status(400).json({ error: "invalid data , data is empty" })
-      } else {
-        res.json(analyzeData(body.text))
-      }
+      res.json(analyzeData(body.text))
     } else {
       res.status(400).json({ error: "invalid data format, can't find 'Text'" })
     }
