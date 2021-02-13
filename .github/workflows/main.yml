@@ -41,20 +41,12 @@ jobs:
       - name: test
         run: npm run test
       
-#       - name: Heroku_deployment
-#         uses: akhileshns/heroku-deploy@v3.7.8 # This is the action
-#         with:
-#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-#           heroku_app_name: "fullstack2020-part11" #Must be unique in Heroku
-#           heroku_email: "delphi1004@hanmail.net"
-#           healthcheck: "https://fullstack2020-part11.herokuapp.com/health"
-#           checkstring: "ok"
-#           rollbackonhealthcheckfailed: true
-#       - name: notification
-#         if: ${{ always() }}
-#         uses: 8398a7/action-slack@v3
-#         with:
-#           status: ${{ job.status }}
-#           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
-#         env:
-#           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      - name: Heroku_deployment
+        uses: akhileshns/heroku-deploy@v3.7.8 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "dbassignmentapi" #Must be unique in Heroku
+          heroku_email: "delphi1004@hanmail.net"
+          healthcheck: "https://dbassignmentapi.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
