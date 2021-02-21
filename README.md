@@ -13,7 +13,7 @@ In the project directory, you can run:
 If the installation was successful, you should be able to run the following command.
 
 ### `npm run dev`
-Runs the app in the development mode. You will see extra logging information<br />
+Runs the app in the development mode. You will see extra logging information.<br />
 
 ### `npm start`
 Runs the app in the production mode.<br />
