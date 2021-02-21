@@ -10,7 +10,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-If the installation was successful, you should be able to run the following command.
+If the installation was successful, you should be able to run the following scripts.
 
 ### `npm run dev`
 Runs the app in the development mode. You will see extra logging information.<br />
