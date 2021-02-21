@@ -24,7 +24,7 @@ Runs the test scenario by jest.<br />
 ### `npm run lint`
 Runs linting.<br />
 
-## Example query
+## Example Curl command to call the API
 
  curl --header "Content-Type: application/json" \
             --request POST \
