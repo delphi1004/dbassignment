@@ -37,7 +37,7 @@ function analyzeData(data) {
   return result
 }
 
-analyzerRouter.post('/', async (req, res) => {
+analyzerRouter.post('/', (req, res) => {
   const body = req.body
 
   try {
