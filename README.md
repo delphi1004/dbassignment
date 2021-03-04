@@ -1,7 +1,7 @@
 ### This project is for the programming assignment of Dream broker
 https://challenge.dreambroker.jobs/245768c7-b82f-4a77-abbc-d1214acf7163 <br />
 
-if you run this prject on your local, please use port number 5000.
+if you run this project on your local, please use port number 5000.
 Also, please find the deployed app from below https://dbassignmentapi.herokuapp.com/analyze
 
 ## Available Scripts
